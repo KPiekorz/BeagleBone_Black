@@ -1,0 +1,11 @@
+make ARCH=arm distclean
+
+make ARCH=arm bb.org_defconfig
+
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
+
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- uImage dtbs LOADADDR=0x80008000 -j4
+
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-  modules  -j4
+
+sudo make ARCH=arm  modules_install
